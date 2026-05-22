@@ -28,10 +28,10 @@ export default function About() {
           <div className="space-y-6 text-gray-600 leading-relaxed">
             <p>
               This blog is a collection of thoughts on building things that last. I believe in the power of simplicity,
-              the importance of craft, and the idea that good design is invisible until it's missing.
+              the importance of craft, and the idea that good design is invisible until it is missing.
             </p>
             <p>
-              When I'm not writing here, I'm usually working on software, exploring new ideas, or trying to find
+              When I am not writing here, I am usually working on software, exploring new ideas, or trying to find
               the perfect cup of coffee.
             </p>
           </div>

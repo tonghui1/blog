@@ -71,6 +71,7 @@ export default function Home() {
             <div className="grid md:grid-cols-5 gap-0">
               <div className="md:col-span-2 bg-gradient-to-br from-blue-600 to-indigo-700 p-10 flex items-center justify-center">
                 <div className="w-48 h-48 rounded-full border-4 border-white/30 overflow-hidden shadow-2xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                     alt="Profile"
@@ -80,7 +81,7 @@ export default function Home() {
               </div>
               <div className="md:col-span-3 p-10 md:p-12">
                 <h1 className="text-4xl md:text-5xl font-light tracking-tight text-gray-900 mb-4">
-                  Hi, I'm Alex Chen
+                  Hi, I am Alex Chen
                 </h1>
                 <p className="text-xl text-gray-600 mb-6 leading-relaxed">
                   Full-stack developer passionate about building beautiful, functional, and accessible web applications. 
@@ -126,7 +127,7 @@ export default function Home() {
         <div className="mb-16 text-center">
           <h2 className="text-3xl font-light tracking-tight mb-4">Featured Projects</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            A collection of projects I've worked on. Each one represents a different approach and challenge.
+            A collection of projects I have worked on. Each one represents a different approach and challenge.
           </p>
         </div>
 
@@ -137,6 +138,7 @@ export default function Home() {
               className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden group"
             >
               <div className="aspect-video overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src={project.image} 
                   alt={project.title}
