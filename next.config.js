@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",        // 保持静态导出
+  output: 'standalone',
   images: {
     unoptimized: true,
   },
