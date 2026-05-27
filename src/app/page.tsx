@@ -45,7 +45,29 @@ const projects = [
   },
 ];
 
-export default function Home() {
+// Fetch profile data
+async function getProfile() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/profile`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Failed to fetch profile');
+    return res.json();
+  } catch {
+    // Fallback to default data
+    return {
+      name: 'Alex Chen',
+      bio: 'Full-stack developer passionate about building beautiful, functional, and accessible web applications. I love turning complex problems into simple, elegant solutions.',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+      techStack: ['React', 'TypeScript', 'Next.js', 'Node.js', 'Tailwind CSS', 'PostgreSQL', 'Git', 'Docker'],
+      githubUrl: 'https://github.com',
+      linkedinUrl: 'https://linkedin.com'
+    };
+  }
+}
+
+export default async function Home() {
+  const profile = await getProfile();
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="border-b border-gray-200 bg-white">
@@ -73,7 +95,7 @@ export default function Home() {
                 <div className="w-48 h-48 rounded-full border-4 border-white/30 overflow-hidden shadow-2xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                    src={profile.avatarUrl} 
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -81,16 +103,15 @@ export default function Home() {
               </div>
               <div className="md:col-span-3 p-10 md:p-12">
                 <h1 className="text-4xl md:text-5xl font-light tracking-tight text-gray-900 mb-4">
-                  Hi, I am Alex Chen
+                  Hi, I am {profile.name}
                 </h1>
                 <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-                  Full-stack developer passionate about building beautiful, functional, and accessible web applications. 
-                  I love turning complex problems into simple, elegant solutions.
+                  {profile.bio}
                 </p>
                 <div className="mb-8">
                   <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wider mb-4">Tech Stack</h3>
                   <div className="flex flex-wrap gap-3">
-                    {['React', 'TypeScript', 'Next.js', 'Node.js', 'Tailwind CSS', 'PostgreSQL', 'Git', 'Docker'].map((tech) => (
+                    {profile.techStack.map((tech: string) => (
                       <span 
                         key={tech} 
                         className="px-4 py-2 bg-gray-100 text-gray-700 text-sm rounded-full border border-gray-200"
@@ -102,7 +123,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4">
                   <a 
-                    href="https://github.com" 
+                    href={profile.githubUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium"
@@ -110,7 +131,7 @@ export default function Home() {
                     GitHub
                   </a>
                   <a 
-                    href="https://linkedin.com" 
+                    href={profile.linkedinUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"

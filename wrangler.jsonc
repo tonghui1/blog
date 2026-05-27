@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler-2.json",
+  "name": "blog",
+  "compatibility_date": "2026-05-27",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "blog",
+      "database_id": "41eac558-0e19-4be6-bc89-4dfc402132f3"
+    }
+  ]
+}
