@@ -1,10 +1,5 @@
 import { NextResponse } from 'next/server';
 
-// Cloudflare D1 类型定义
-interface Env {
-  DB: D1Database;
-}
-
 // 本地开发时的 mock 数据
 const mockProfile = {
   name: 'Alex Chen',
@@ -17,15 +12,7 @@ const mockProfile = {
 
 export async function GET() {
   try {
-    // 检查是否在 Cloudflare Pages 环境中
-    if (typeof process !== 'undefined' && process.env.CF_PAGES) {
-      // Cloudflare Pages 环境 - 使用 D1
-      // Note: 在 Pages Functions 中我们通过 context 访问 env
-      // 这里先返回 mock 数据，完整实现需要 Pages Functions
-      return NextResponse.json(mockProfile);
-    }
-    
-    // 本地开发环境
+    // 暂时都返回 mock 数据，等 Cloudflare Pages 环境配置好后再连接 D1
     return NextResponse.json(mockProfile);
   } catch (error) {
     console.error('Failed to fetch profile:', error);
